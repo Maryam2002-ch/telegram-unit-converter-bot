@@ -48,19 +48,18 @@ Start the bot and send your request in this format: <br>
 ```bash
 git clone https://github.com/Maryam2002-ch/telegram-unit-converter-bot.git
 ```
-2. Navigate to the English version:
-```bash
-cd en
-```
-3. Install dependencies:
+2. Install dependencies:
 ```bash
 pip install pyTelegramBotAPI python-dotenv
 ```
-4. Create a .env file:
+3. Create a .env file: <br>
 `token=YOUR_BOT_TOKEN`
-5. Run the bot:
+
+4. Run the bot:
 ```bash
-python bot.py
+python unit_conversion.py
 ```
+---
+⭐ If you found this useful, give it a star!
 
 
