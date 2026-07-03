@@ -74,7 +74,7 @@ def unit_convert(message):
         if answer.is_integer():
             answer = int(answer)
 
-        bot.reply_to(message=message, text=f"✅{number} {from_unit} = {answer} {to_unit}")
+        bot.reply_to(message=message, text=f"✅{number} {from_unit} = {round(answer, 2)} {to_unit}")
 
     #برای زمانی که کاربر ، تبدیل واحدهای ناسازگار ارسال کرد
     except UnboundLocalError:
