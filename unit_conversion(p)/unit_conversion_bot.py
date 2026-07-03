@@ -20,35 +20,39 @@ guide += "\n❌لطفا از ارسال واحدهای ناسازگار خودد
 
 @bot.message_handler(commands=['start'])
 def introduce_bot(message):
-    """Robot introduces himself"""
+    """ربات خودش را معرفی می کند"""
     bot.send_message(chat_id=message.chat.id, text="سلام👋! من یک ربات تبدیل واحد هستم. لطفا به راهنمایی که ارسال شد، توجه کنید.")
 
     bot.send_message(chat_id=message.chat.id, text=guide, parse_mode='HTML')
 
 @bot.message_handler(commands=['راهنما'])
 def send_guide(message):
-    """Send guide to user"""
+    """ارسال پیام راهنما"""
     bot.reply_to(message=message, text=guide, parse_mode='HTML')
 
 @bot.message_handler(func=lambda msg:True)
 def unit_convert(message):
-    """converting units"""
-    parts = message.text.split("به")
-
-    part1 = parts[0].strip()    #عدد + واحد مبدا
-    part2 = parts[1].strip()      #واحد مقصد
-    
-     #جدا کردن عدد از واحد مبدا
-    from_unit = part1.split()
-    number = float(from_unit[0])
-    from_unit = ' '.join(from_unit[1:])  
-
-    #تعیین واحد مقصد
-    to_unit = part2     
+    """تبدیل کردن واحدها"""
+    parts = message.text.split("به")    
     
     try:
+        part1 = parts[0].strip()    #عدد + واحد مبدا
+        part2 = parts[1].strip()      #واحد مقصد
+    
+        #جدا کردن عدد از واحد مبدا
+        from_unit = part1.split()
+
+        number = float(from_unit[0])
+
+        if number.is_integer():
+            number = int(number)
+
+        from_unit = ' '.join(from_unit[1:])  
+
+        #تعیین واحد مقصد
+        to_unit = part2     
         
-        #Length uint convert
+        #تبدیل واحد طور
         if from_unit == 'متر':
             answer = meters_conversion(number, to_unit)
         elif from_unit == 'سانتی متر':
@@ -58,32 +62,28 @@ def unit_convert(message):
         elif from_unit == 'میکرومتر':
             answer = micrometers_conversion(number, to_unit)
 
-        #Weight unit convert
-        if from_unit == 'کیلوگرم':
+        #تبدیل واحد وزن
+        elif from_unit == 'کیلوگرم':
             answer = kilograms_conversion(number, to_unit)
         elif from_unit == 'گرم':
             answer = grams_conversion(number, to_unit)
         elif from_unit == 'میلی گرم':
             answer = milligrams_conversion(number, to_unit)
-
-        #To better display the answer
-        if number.is_integer() and answer.is_integer():
-            number = int(number)
+            
+        #برای نمایش بهتر جواب
+        if answer.is_integer():
             answer = int(answer)
 
         bot.reply_to(message=message, text=f"✅{number} {from_unit} = {answer} {to_unit}")
 
-    except ValueError:
-        text = "❌Please send your request in right foramt(1 meters to centimeters).\n"
-        text += "Send /guide command to see the guide "
-        bot.reply_to(message=message, text=text)
-
     #برای زمانی که کاربر ، تبدیل واحدهای ناسازگار ارسال کرد
     except UnboundLocalError:
-        bot.reply_to(message=message, text= "❌Please don't send units to convert that are not compatible!\nSend /guide command to see the guide.")
+        bot.reply_to(message=message, 
+            text= "❌لطفا از ارسال تبدیل واحدهای ناسازگار خودداری کنید!\n\nبرای دیدن راهنما، لطفا دستور /راهنما را ارسال کنید.")
     
+    #زمانی که کاربر پیام غیر مرتبط ارسال کرد
     except IndexError:
-        pass
-
+        bot.reply_to(message=message,
+                text="❌لطفا فقط پیامی مربوط به تبدیل واحد ارسال کنید!\n\nبرای دریافت راهنما، لطفا دستور /راهنما را ارسال کنید.")
 
 bot.infinity_polling()
