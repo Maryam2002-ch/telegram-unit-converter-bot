@@ -2,8 +2,7 @@
 
 A Telegram bot for converting length and weight units easily.
 
-Currently available in **English**.  
-A **Persian** version is on the way! 🇮🇷
+Available in **English** and **Persian** 🇬🇧🇮🇷.
 
 ---
 
@@ -16,21 +15,44 @@ A **Persian** version is on the way! 🇮🇷
   - kilograms, grams, milligrams
 
 - 🔄 Compatible unit conversion only
-- 📘 Built-in guide (`/guide`)
+- 📘 Built-in guide (`/guide` or `/راهنما`)
 - ❌ Error handling for invalid inputs
 
 ---
 
-## 🚀 How to Use
+## 🚀 How to Use / نحوه استفاده
 
-Start the bot and send your request in this format: <br>
+### English 🇬🇧
+Send your request in this format: <br>
 `number from_unit to to_unit`
 
+Example: `10 meters to centimeters`
 
-### Examples
+---
 
-`10 meters to centimeters` <br> <br>
-✅ Result: `10 meters = 1000 centimeters`
+### Persian 🇮🇷
+درخواست خود را به این شکل ارسال کنید: <br>
+`عدد واحد_مبدا به واحد_مقصد`
+
+مثال: `10 متر به سانتی متر`
+
+
+---
+
+## 📁 Project Structure
+
+unit_conversion_bot/ <br>
+├── unit_conversion(E)/ # English version <br>
+│ ├── unit_conversion_bot.py <br>
+│ ├── length_unit_conversion.py <br>
+│ └── weight_unit_conversion.py <br>
+├── unit_conversion(P)/ # Persian version 🇮🇷 <br>
+│ ├── unit_conversion_bot.py <br>
+│ ├── length_unit_conversion.py <br>
+│ └── weight_unit_conversion.py <br>
+├── .gitignore <br>
+└── README.md 
+
 
 ---
 
