@@ -1,5 +1,5 @@
 def meters_conversion(number, unit):
-    """Convert meters to units"""
+    """تبدیل متر به واحدهای دیگر"""
     
     #تبدیل متر به سانتی متر
     if unit == 'سانتی متر':
@@ -20,7 +20,7 @@ def meters_conversion(number, unit):
     return answer
 
 def centimeters_conversion(number, unit):
-    """Convert centimeters to units"""
+    """تبدیل سانتی متر به واحدهای دیگر"""
 
     #تبدیل سانتی متر به متر
     if unit == 'متر':
@@ -41,7 +41,7 @@ def centimeters_conversion(number, unit):
     return answer
 
 def millimeters_conversion(number, unit):
-    """Convert millimeters to units"""
+    """تبدیل میلی متر به واحدهای دیگر"""
 
     #تبدیل میلی متر به متر
     if unit == 'متر':
@@ -62,7 +62,7 @@ def millimeters_conversion(number, unit):
     return answer
 
 def micrometers_conversion(number, unit):
-    """Convert micrometers to units"""
+    """تبدیل میکرومتر به واحدهای دیگر"""
 
     #تبدیل میکرومتر به متر
     if unit == 'متر':
