@@ -1,5 +1,5 @@
 def kilograms_conversion(number, unit):
-    """Convet kilograms to units"""
+    """تبدیل کیلوگرم به واحدهای دیگر"""
 
     #تبدیل کیلوگرم به گرم
     if unit == 'گرم':
@@ -16,7 +16,7 @@ def kilograms_conversion(number, unit):
     return answer
 
 def grams_conversion(number, unit):
-    """Convert grams to units"""
+    """تبدیل گرم به واحدهای دیگر"""
 
     #تبدیل گرم به کیلوگرم
     if unit == 'کیلوگرم':
@@ -33,7 +33,7 @@ def grams_conversion(number, unit):
     return answer
 
 def milligrams_conversion(number, unit):
-    """Convert milligrams to units"""
+    """تبدیل میلی گرم به واحد های دیگر"""
 
     #تبدیل میلی گرم به کیلوگرم
     if unit == 'کیلوگرم':
